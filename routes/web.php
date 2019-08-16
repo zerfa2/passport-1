@@ -25,3 +25,11 @@ Route::get('/', function () {
 Route::group(["prefix" => "v1", "namespace" => "Api/v1" ], function(){
 
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/client','ClientController@index')->middleware('auth');
+Route::get('/test-api',function(){
+    return view('test');
+});
